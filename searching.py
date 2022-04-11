@@ -28,13 +28,26 @@ def linear_search(sequence, number):
    slovnik = {"indexy": num_index, "cetnost": sumation}
    return slovnik
 
+def pattern_search(sekvence, vzor):
+   positions = set()
+   index = 0
+   while index < len(sekvence) - len(vzor):
+       if sekvence[index:index + len(vzor)] == vzor:
+           positions.add(index)
+       index = index + 1
+   return positions
+
+
 
 def main():
-    sequential_data = read_data("sequential.json", "unordered_numbers")
+    #sequential_data = read_data("sequential.json", "unordered_number")
+    sequential_data = read_data("sequential.json", "dna_sequence")
     print(sequential_data)
-    print(linear_search(sequential_data, number))
+    #print(linear_search(sequential_data, number))
+    print(pattern_search(sequential_data, vzor ))
 
 
 if __name__ == '__main__':
-    number = 9
+    #number = 9
+    vzor = "ATA"
     main()
