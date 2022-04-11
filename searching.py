@@ -18,11 +18,23 @@ def read_data(file_name, field):
         return None
     return data[field]
 
+def linear_search(sequence, number):
+   sumation = 0
+   num_index = []
+   for i, nmbr in enumerate(sequence):
+       if nmbr == number:
+           sumation += 1
+           num_index.append(i)
+   slovnik = {"indexy": num_index, "cetnost": sumation}
+   return slovnik
+
 
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     print(sequential_data)
+    print(linear_search(sequential_data, number))
 
 
 if __name__ == '__main__':
+    number = 9
     main()
