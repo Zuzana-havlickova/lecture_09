@@ -32,22 +32,51 @@ def pattern_search(sekvence, vzor):
    positions = set()
    index = 0
    while index < len(sekvence) - len(vzor):
-       if sekvence[index:index + len(vzor)] == vzor:
+       idx = 0
+       for letter in sekvence[index:index + len(vzor)]:
+           if letter != vzor[idx]:
+               break
+           else:
+               idx = idx + 1
+       if idx == len(vzor):
            positions.add(index)
        index = index + 1
    return positions
 
 
+def binary_search(seznam, cislo):
+    left = 0
+    right = len(seznam) - 1
+    while left < right:
+        middle = (left + right) // 2
+        if seznam[middle] == cislo:
+            return middle
+        elif seznam[middle] < cislo:
+            left = middle + 1
+        elif seznam[middle] > cislo:
+            right = middle -1
+    return None
+
 
 def main():
     #sequential_data = read_data("sequential.json", "unordered_number")
-    sequential_data = read_data("sequential.json", "dna_sequence")
+    #sequential_data = read_data("sequential.json", "dna_sequence")
+    sequential_data = read_data("sequential.json", "ordered_numbers")
     print(sequential_data)
     #print(linear_search(sequential_data, number))
-    print(pattern_search(sequential_data, vzor ))
+    #print(pattern_search(sequential_data, vzor))
+    print(binary_search(sequential_data, cislo))
 
 
 if __name__ == '__main__':
     #number = 9
-    vzor = "ATA"
+    #vzor = "ATA"
+    cislo = 14
     main()
+
+
+
+
+
+
+
